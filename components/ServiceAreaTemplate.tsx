@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import LeaveReview from "@/components/LeaveReview";
 import FaqSection from "@/components/FaqSection";
 
 const allServices = [
@@ -26,6 +27,8 @@ export interface ServiceAreaProps {
 	state?: string;
 	intro: string;
 	nearbyAreas: string[];
+	heroBgImage?: string;
+	heroImage?: string;
 }
 
 export default function ServiceAreaTemplate({
@@ -33,6 +36,8 @@ export default function ServiceAreaTemplate({
 	state = "CA",
 	intro,
 	nearbyAreas,
+	heroBgImage = "/services/tree-removal/IMG_0146.JPEG",
+	heroImage = "/services/tree-trimming/IMG_1271.JPEG",
 }: ServiceAreaProps) {
 	return (
 		<>
@@ -40,10 +45,16 @@ export default function ServiceAreaTemplate({
 
 			{/* Hero */}
 			<section
-				className="relative pt-40 pb-20 px-6"
-				style={{ background: "linear-gradient(135deg, #1B6B2A 0%, #0D0D0D 100%)" }}
+				className="relative pt-40 pb-20 px-6 overflow-hidden"
 			>
-				<div className="max-w-4xl mx-auto">
+				{/* Background image */}
+				<div
+					className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+					style={{ backgroundImage: `url('${heroBgImage}')` }}
+				/>
+				{/* Dark overlay */}
+				<div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/60 to-black/50" />
+				<div className="max-w-4xl mx-auto relative z-10">
 					<div
 						className="inline-flex items-center gap-2 rounded-full px-5 py-2 mb-6 text-sm font-medium"
 						style={{ backgroundColor: "rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.75)" }}
@@ -75,10 +86,10 @@ export default function ServiceAreaTemplate({
 
 					{/* Left arch image */}
 					<div className="relative w-full lg:w-1/2 shrink-0 flex justify-center">
-						<div className="relative w-full max-w-120">
+						<div className="relative w-full max-w-[480px]">
 							<div className="overflow-hidden w-full" style={{ borderRadius: "50% 50% 8px 8px / 12% 12% 100% 100%" }}>
-								<div className="aspect-4/5 relative">
-									<Image src="/services/tree-trimming/IMG_1271.JPEG" alt={`Tree service in ${city}, ${state}`} fill className="object-cover object-center" />
+								<div className="aspect-[4/5] relative">
+									<Image src={heroImage} alt={`Tree service in ${city}, ${state}`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-center" />
 								</div>
 							</div>
 							<div
@@ -167,7 +178,7 @@ export default function ServiceAreaTemplate({
 							className="group block rounded-2xl overflow-hidden border border-gray-100 bg-white shadow-sm hover:shadow-lg transition-shadow duration-300"
 						>
 							<div className="relative w-full overflow-hidden" style={{ height: "180px" }}>
-								<Image src={s.img} alt={s.label} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+								<Image src={s.img} alt={s.label} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
 							</div>
 							<div className="p-5" style={{ backgroundColor: "#f0fdf4" }}>
 								<h3 className="font-tenor-sans font-bold text-gray-900 mb-2">{s.label}</h3>
@@ -267,6 +278,7 @@ export default function ServiceAreaTemplate({
 				</div>
 			</section>
 
+			<LeaveReview />
 			<Footer />
 		</>
 	);

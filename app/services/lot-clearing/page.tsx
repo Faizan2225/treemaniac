@@ -11,6 +11,7 @@ export default function LotClearingPage() {
 		<ServicePageTemplate
 			title="Lot & Land Clearing"
 			slug="lot-clearing"
+			heroBgImage="/services/lot-and-land-clearing/IMG_7100.JPEG"
 			heroImage="/services/lot-and-land-clearing/IMG_3518.JPEG"
 			intro="Planning a construction project, landscaping renovation, or simply reclaiming overgrown land? Tree Maniac Tree Service Inc. provides complete lot and land clearing services throughout Fresno and the Central Valley — removing trees, brush, stumps, and debris so your land is ready to use. We handle projects of all sizes, from small residential lots to large commercial parcels."
 			importantNotes={[

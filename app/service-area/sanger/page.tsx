@@ -11,7 +11,9 @@ export default function SangerPage() {
 	return (
 		<ServiceAreaTemplate
 			city="Sanger"
-			intro="we are your local tree service expert in Sanger, CA — available 24/7 for all tree care needs in Sanger and the surrounding foothills area. Whether you need hazardous tree removal, routine trimming, or emergency storm cleanup, our crew responds fast and gets the job done right."
+			heroBgImage="/services/stump-trimming/IMG_5892.JPEG"
+			heroImage="/services/tree-trimming/IMG_4917.JPEG"
+			intro="we are Sanger's trusted choice for professional tree services. Whether you need an old stump removed, a dangerous tree taken down, or regular pruning to keep your oaks healthy, our experienced crew is fully equipped to handle projects of any size across the Nation's Christmas Tree City."
 			nearbyAreas={[
 				"Fresno",
 				"Clovis",

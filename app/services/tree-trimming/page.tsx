@@ -11,6 +11,7 @@ export default function TreeTrimmingPage() {
 		<ServicePageTemplate
 			title="Tree Trimming & Pruning"
 			slug="tree-trimming"
+			heroBgImage="/services/tree-trimming/IMG_4917.JPEG"
 			heroImage="/services/tree-trimming/IMG_1267.JPEG"
 			intro="Regular tree trimming keeps your trees healthy, your yard looking great, and your property safe. Tree Maniac Tree Service Inc. provides expert trimming and pruning services for all tree types across Fresno and the Central Valley. From shaping and deadwood removal to crown reduction and canopy thinning, we deliver precise results that improve both the health and appearance of your trees."
 			importantNotes={[

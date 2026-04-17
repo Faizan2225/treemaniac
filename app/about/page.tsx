@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import LeaveReview from "@/components/LeaveReview";
 
 const steps = [
 	{
@@ -369,6 +370,7 @@ export default function AboutPage() {
 				</div>
 			</section>
 
+			<LeaveReview />
 			<Footer />
 		</>
 	);

@@ -11,6 +11,8 @@ export default function FresnoPage() {
 	return (
 		<ServiceAreaTemplate
 			city="Fresno"
+			heroBgImage="/services/tree-removal/IMG_0146.JPEG"
+			heroImage="/services/tree-trimming/IMG_1271.JPEG"
 			intro="we keep properties across Fresno safe, clean, and beautiful. As the heart of the Central Valley, Fresno is our home base. We serve all Fresno neighborhoods including Fig Garden, Sunnyside, Tarpey Village, West Park, Herndon, Edison, Calwa, Roosevelt, and more — with fast, professional tree care at fair prices."
 			nearbyAreas={[
 				"Fresno",

@@ -11,7 +11,9 @@ export default function MaderaPage() {
 	return (
 		<ServiceAreaTemplate
 			city="Madera"
-			intro="we provide expert tree removal, trimming, and emergency services throughout Madera, CA. From downtown Madera to surrounding rural properties, our experienced crew handles jobs of all sizes — available 24/7 with fair pricing and professional results you can count on."
+			heroBgImage="/services/tree-trimming/IMG_1695.JPEG"
+			heroImage="/services/lot-and-land-clearing/IMG_1694.JPG"
+			intro="we provide expert tree care services to Madera and surrounding communities. From residential trimming to large-scale lot clearing, our licensed and insured team delivers safe, reliable, and affordable tree solutions to keep Madera properties beautiful and hazard-free."
 			nearbyAreas={[
 				"Fresno",
 				"Clovis",

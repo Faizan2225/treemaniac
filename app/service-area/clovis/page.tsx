@@ -11,7 +11,9 @@ export default function ClovisPage() {
 	return (
 		<ServiceAreaTemplate
 			city="Clovis"
-			intro="we proudly serve Clovis, CA — one of the fastest-growing communities in the Central Valley. Our team is ready for residential and commercial tree care throughout Clovis, delivering reliable, affordable service with fast response times and professional results every time."
+			heroBgImage="/services/lot-and-land-clearing/IMG_7100.JPEG"
+			heroImage="/services/tree-removal/IMG_1239.JPEG"
+			intro="we proudly serve homeowners and businesses throughout Clovis, CA. Whether you live near Buchanan High, Old Town Clovis, or out towards Harlan Ranch, our expert team is ready to handle all your tree removal, trimming, and emergency service needs with precision and care."
 			nearbyAreas={[
 				"Fresno",
 				"Clovis",

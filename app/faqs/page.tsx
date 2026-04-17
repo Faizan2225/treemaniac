@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import LeaveReview from "@/components/LeaveReview";
 import FaqSection from "@/components/FaqSection";
 
 export const metadata = {
@@ -113,6 +114,7 @@ export default function FaqsPage() {
 				</div>
 			</section>
 
+			<LeaveReview />
 			<Footer />
 		</>
 	);

@@ -11,6 +11,7 @@ export default function ResidentialTreeServicesPage() {
 		<ServicePageTemplate
 			title="Residential Tree Services"
 			slug="residential-tree-services"
+			heroBgImage="/services/tree-trimming/IMG_1271.JPEG"
 			heroImage="/services/tree-trimming/IMG_1695.JPEG"
 			intro="Your home deserves the best care. Tree Maniac Tree Service Inc. provides a full range of residential tree services — from regular trimming and pruning to emergency removal and stump grinding. We treat every home like it's our own, delivering clean, safe, and professional results every time. Homeowners across Fresno and the Central Valley trust us for reliable, friendly service at fair prices."
 			importantNotes={[

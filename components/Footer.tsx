@@ -177,9 +177,14 @@ export default function Footer() {
 				>
 					<p>© 2025 Tree Maniac Tree Service Inc. All Rights Reserved.</p>
 					<div className="flex flex-col sm:flex-row items-center gap-3">
-						<p className="text-white font-extrabold text-sm tracking-wide">
+						<a
+							href="https://businessupscalersllc.com"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="text-white font-extrabold text-sm tracking-wide hover:text-green-400 transition-colors"
+						>
 							Built by Upscalers
-						</p>
+						</a>
 					</div>
 				</div>
 			</div>

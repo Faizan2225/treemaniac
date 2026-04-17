@@ -11,6 +11,7 @@ export default function CommercialTreeServicesPage() {
 		<ServicePageTemplate
 			title="Commercial Tree Services"
 			slug="commercial-tree-services"
+			heroBgImage="/services/lot-and-land-clearing/IMG_7097.JPEG"
 			heroImage="/services/lot-and-land-clearing/IMG_6450.JPEG"
 			intro="First impressions matter. Tree Maniac Tree Service Inc. partners with businesses, HOAs, property managers, and commercial developers throughout Fresno to maintain safe, attractive, and liability-free landscapes. Our commercial team is equipped for large-scale tree removal, trimming, and lot clearing on any timeline — with minimal disruption to your operations."
 			importantNotes={[

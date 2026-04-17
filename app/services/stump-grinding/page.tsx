@@ -11,6 +11,7 @@ export default function StumpGrindingPage() {
 		<ServicePageTemplate
 			title="Stump Grinding"
 			slug="stump-grinding"
+			heroBgImage="/services/lot-and-land-clearing/IMG_7088.JPEG"
 			heroImage="/services/stump-trimming/IMG_5892.JPEG"
 			intro="Leftover tree stumps are more than an eyesore — they're a tripping hazard and can attract pests. Tree Maniac Tree Service Inc. uses professional-grade equipment to grind and remove stumps quickly and cleanly, restoring your yard to a smooth, usable surface. We grind stumps below ground level and can fill the area with wood chips or topsoil upon request."
 			importantNotes={[

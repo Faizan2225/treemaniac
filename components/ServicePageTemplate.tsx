@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import LeaveReview from "@/components/LeaveReview";
 import FaqSection from "@/components/FaqSection";
 
 const allServices = [
@@ -17,6 +18,7 @@ const allServices = [
 export interface ServicePageProps {
 	title: string;
 	slug: string;
+	heroBgImage: string;
 	heroImage: string;
 	intro: string;
 	importantNotes?: string[];
@@ -27,6 +29,7 @@ export interface ServicePageProps {
 export default function ServicePageTemplate({
 	title,
 	slug,
+	heroBgImage,
 	heroImage,
 	intro,
 	importantNotes,
@@ -38,10 +41,16 @@ export default function ServicePageTemplate({
 
 			{/* Page Hero */}
 			<section
-				className="relative pt-40 pb-20 px-6"
-				style={{ background: "linear-gradient(135deg, #1B6B2A 0%, #0D0D0D 100%)" }}
+				className="relative pt-40 pb-20 px-6 overflow-hidden"
 			>
-				<div className="max-w-4xl mx-auto">
+				{/* Background image */}
+				<div
+					className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+					style={{ backgroundImage: `url('${heroBgImage}')` }}
+				/>
+				{/* Dark overlay */}
+				<div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/60 to-black/50" />
+				<div className="max-w-4xl mx-auto relative z-10">
 					<div
 						className="inline-flex items-center gap-2 rounded-full px-5 py-2 mb-6 text-sm font-medium"
 						style={{ backgroundColor: "rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.75)" }}
@@ -55,7 +64,7 @@ export default function ServicePageTemplate({
 						<span className="w-2 h-2 rounded-full bg-green-400 inline-block" />
 					</div>
 
-					<h1 className="font-tenor-sans text-white font-bold" style={{ fontSize: "clamp(2.2rem, 5vw, 3.5rem)" }}>
+					<h1 className="font-tenor-sans text-white font-bold" style={{ fontSize: "clamp(2.2rem, 5vw, 3.5rem)", wordBreak: "keep-all", overflowWrap: "normal" }}>
 						{title}
 					</h1>
 
@@ -83,6 +92,7 @@ export default function ServicePageTemplate({
 								src={heroImage}
 								alt={title}
 								fill
+								sizes="(max-width: 1024px) 100vw, 50vw"
 								className="object-cover object-center"
 							/>
 						</div>
@@ -244,6 +254,7 @@ export default function ServicePageTemplate({
 				</div>
 			</section>
 
+			<LeaveReview />
 			<Footer />
 		</>
 	);

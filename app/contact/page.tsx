@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import LeaveReview from "@/components/LeaveReview";
 
 export default function ContactPage() {
 	const [submitted, setSubmitted] = useState(false);
@@ -329,6 +330,7 @@ export default function ContactPage() {
 				</div>
 			</section>
 
+			<LeaveReview />
 			<Footer />
 		</>
 	);

@@ -11,7 +11,8 @@ export default function EmergencyTreeServicePage() {
 		<ServicePageTemplate
 			title="Emergency Tree Service"
 			slug="emergency-tree-service"
-			heroImage="/services/tree-removal/65524423604__842AC5D4-4616-4B70-A5FA-89C9903EF790.JPEG"
+			heroBgImage="/services/tree-removal/71692282806__81B0A94D-3ADB-4262-AB9A-E82D46C2D8B6.JPEG"
+			heroImage="/services/tree-removal/IMG_0150.JPEG"
 			intro="Storms don't wait — and neither do we. Tree Maniac Tree Service Inc. is on call around the clock to handle emergency tree situations including fallen trees, storm damage, blocked driveways, and hazardous limbs threatening your property. Our rapid response team is available 24/7, including weekends and holidays, to protect your home and restore your property fast."
 			importantNotes={[
 				"Available 24/7 — including nights, weekends & holidays",

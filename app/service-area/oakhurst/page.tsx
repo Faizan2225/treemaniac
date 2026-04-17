@@ -11,7 +11,9 @@ export default function OakhurstPage() {
 	return (
 		<ServiceAreaTemplate
 			city="Oakhurst"
-			intro="we serve Oakhurst, CA and the Sierra Nevada foothills with expert tree care. Whether you need hazardous tree removal on a slope, routine trimming of mature trees, or emergency storm cleanup in the foothills, we have the crew and equipment to handle it safely and efficiently."
+			heroBgImage="/services/tree-removal/71692282806__81B0A94D-3ADB-4262-AB9A-E82D46C2D8B6.JPEG"
+			heroImage="/services/lot-and-land-clearing/IMG_6450.JPEG"
+			intro="we understand the unique tree care challenges of living in the foothills. We provide specialized tree removal, fire safety clearing, and emergency response services to homeowners and businesses throughout Oakhurst, Coarsegold, and Coalinga."
 			nearbyAreas={[
 				"Fresno",
 				"Clovis",
