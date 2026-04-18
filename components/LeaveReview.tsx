@@ -114,7 +114,7 @@ export default function LeaveReview() {
 									fill="#EA4335"
 								/>
 							</svg>
-							Review Us on Google
+							Leave Us a Review on Google
 							<svg
 								className="w-4 h-4 transition-transform group-hover:translate-x-1"
 								fill="none"
