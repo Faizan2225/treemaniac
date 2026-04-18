@@ -47,19 +47,30 @@ export default function HeadingScrollAnimation() {
 						const text = node.textContent;
 						if (!text) return;
 						const frag = document.createDocumentFragment();
-						for (let i = 0; i < text.length; i++) {
-							const c = text[i];
-							if (c.trim() === "") {
+						// Split by whitespace to group words together
+						const words = text.split(/(\s+)/);
+						for (let w = 0; w < words.length; w++) {
+							const word = words[w];
+							if (!word) continue;
+							
+							if (word.trim() === "") {
 								// Preserve exact whitespace
-								frag.appendChild(document.createTextNode(c));
+								frag.appendChild(document.createTextNode(word));
 							} else {
-								const span = document.createElement("span");
-								span.textContent = c;
-								span.className =
-									"char-anim inline-block opacity-0 -translate-x-3 transition-all duration-[400ms] ease-out";
-								span.style.transitionDelay = `${charCount * 0.025}s`;
-								frag.appendChild(span);
-								charCount++;
+								// Wrap the word so it doesn't break internally across lines
+								const wordWrapper = document.createElement("span");
+								wordWrapper.className = "inline-block whitespace-nowrap";
+								for (let i = 0; i < word.length; i++) {
+									const c = word[i];
+									const span = document.createElement("span");
+									span.textContent = c;
+									span.className =
+										"char-anim inline-block opacity-0 -translate-x-3 transition-all duration-[400ms] ease-out";
+									span.style.transitionDelay = `${charCount * 0.025}s`;
+									wordWrapper.appendChild(span);
+									charCount++;
+								}
+								frag.appendChild(wordWrapper);
 							}
 						}
 						if (node.parentNode) {
