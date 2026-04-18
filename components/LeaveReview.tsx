@@ -5,12 +5,24 @@ const GOOGLE_REVIEW_URL = "https://maps.app.goo.gl/YoQyyZKnM1oQDNB7A";
 export default function LeaveReview() {
 	return (
 		<section className="bg-white py-16 px-6">
-			<div
-				className="relative max-w-4xl mx-auto overflow-hidden rounded-3xl"
-				style={{
-					background: "linear-gradient(135deg, #0D0D0D 0%, #1B6B2A 60%, #22C55E 100%)",
-				}}
-			>
+			<div className="relative max-w-4xl mx-auto">
+				{/* Mascot peeking from bottom left */}
+				<div className="absolute -bottom-8 -left-4 sm:-bottom-12 sm:-left-12 w-24 sm:w-36 z-20 pointer-events-none" style={{ transform: "scaleX(-1)" }}>
+					<Image
+						src="/mascot.png"
+						alt="Tree Maniac mascot"
+						width={160}
+						height={200}
+						className="object-contain drop-shadow-xl"
+					/>
+				</div>
+
+				<div
+					className="relative overflow-hidden rounded-3xl"
+					style={{
+						background: "linear-gradient(135deg, #0D0D0D 0%, #1B6B2A 60%, #22C55E 100%)",
+					}}
+				>
 				{/* Decorative circles */}
 				<div
 					className="absolute -top-16 -right-16 w-56 h-56 rounded-full"
@@ -169,6 +181,7 @@ export default function LeaveReview() {
 						</div>
 					</div>
 				</div>
+			</div>
 			</div>
 		</section>
 	);

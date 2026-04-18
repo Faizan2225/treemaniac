@@ -113,7 +113,7 @@ body {
 .heading-animated .char-anim {
 	opacity: 1 !important;
 	transform: translateX(0) !important;
-	translate: 0 !important;
+	translate: none !important;
 }
 
 .animate-fadeInUp {

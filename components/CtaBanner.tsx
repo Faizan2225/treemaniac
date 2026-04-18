@@ -1,15 +1,28 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function CtaBanner() {
 	return (
 		<section className="bg-white py-16 px-6">
-			<div
-				className="relative max-w-4xl mx-auto overflow-hidden px-10 py-14 text-center"
-				style={{
-					borderRadius: "2.5rem",
-					background: "linear-gradient(135deg, #22C55E 0%, #1B6B2A 50%, #0D0D0D 100%)",
-				}}
-			>
+			<div className="relative max-w-4xl mx-auto">
+				{/* Mascot peeking from top right */}
+				<div className="absolute -top-12 right-2 sm:-top-16 sm:-right-6 w-24 sm:w-32 z-20 pointer-events-none">
+					<Image
+						src="/mascot.png"
+						alt="Tree Maniac mascot"
+						width={160}
+						height={200}
+						className="object-contain drop-shadow-xl"
+					/>
+				</div>
+				
+				<div
+					className="relative overflow-hidden px-10 py-14 text-center"
+					style={{
+						borderRadius: "2.5rem",
+						background: "linear-gradient(135deg, #22C55E 0%, #1B6B2A 50%, #0D0D0D 100%)",
+					}}
+				>
 				{/* Decorative blobs */}
 				<div
 					className="absolute -top-10 -left-10 w-52 h-52 rounded-full opacity-20"
@@ -47,6 +60,7 @@ export default function CtaBanner() {
 						</div>
 					</a>
 				</div>
+			</div>
 			</div>
 		</section>
 	);

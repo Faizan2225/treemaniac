@@ -65,7 +65,7 @@ export default function HeadingScrollAnimation() {
 									const span = document.createElement("span");
 									span.textContent = c;
 									span.className =
-										"char-anim inline-block opacity-0 -translate-x-3 transition-all duration-[400ms] ease-out";
+										"char-anim inline-block opacity-0 translate-y-3 transition-all duration-[400ms] ease-out";
 									span.style.transitionDelay = `${charCount * 0.025}s`;
 									wordWrapper.appendChild(span);
 									charCount++;

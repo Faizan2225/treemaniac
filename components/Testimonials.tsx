@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 const reviews = [
 	{
@@ -29,7 +30,18 @@ export default function Testimonials() {
 			className="relative py-24 px-6 overflow-hidden"
 			style={{ background: "linear-gradient(180deg, #f0fdf4 0%, #dcfce7 100%)" }}
 		>
-			<div className="max-w-3xl mx-auto text-center">
+			{/* Mascot placed safely at the bottom right behind text to ensure it does not overlap or hide anything */}
+			<div className="absolute -bottom-4 -right-2 sm:-bottom-2 sm:right-10 w-28 sm:w-40 z-0 pointer-events-none opacity-80">
+				<Image
+					src="/mascot.png"
+					alt="Tree Maniac mascot"
+					width={160}
+					height={200}
+					className="object-contain"
+				/>
+			</div>
+
+			<div className="relative z-10 max-w-3xl mx-auto text-center">
 
 				{/* Badge */}
 				<div

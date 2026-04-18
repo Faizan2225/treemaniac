@@ -52,7 +52,7 @@ export default function Announcement() {
 				</div>
 
 				{/* Mascot — bottom right, outside the card */}
-				<div className="absolute -bottom-10 -right-4 sm:-right-8 w-24 sm:w-32 z-10 pointer-events-none">
+				<div className="absolute -bottom-14 sm:-bottom-20 -right-2 sm:-right-8 w-24 sm:w-32 z-10 pointer-events-none">
 					<Image
 						src="/mascot.png"
 						alt="Tree Maniac mascot"
