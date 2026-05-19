@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
 	{
@@ -27,15 +28,34 @@ const avatars = [
 	"/services/stump-trimming/IMG_5892.JPEG",
 ];
 
+const containerVariants = {
+	hidden: { opacity: 0 },
+	visible: {
+		opacity: 1,
+		transition: { staggerChildren: 0.1 }
+	}
+};
+
+const itemVariants = {
+	hidden: { opacity: 0, y: 20 },
+	visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
+
 export default function FaqSection() {
 	const [open, setOpen] = useState<number | null>(0);
 
 	return (
-		<section className="py-20 px-6" style={{ backgroundColor: "#f8fdf8" }}>
+		<section className="py-20 px-6 overflow-hidden" style={{ backgroundColor: "#f8fdf8" }}>
 			<div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-14 items-start">
 
 				{/* LEFT */}
-				<div className="lg:w-[38%] shrink-0">
+				<motion.div 
+					initial={{ opacity: 0, x: -30 }}
+					whileInView={{ opacity: 1, x: 0 }}
+					viewport={{ once: true, margin: "-100px" }}
+					transition={{ duration: 0.6, ease: "easeOut" }}
+					className="lg:w-[38%] shrink-0"
+				>
 					<div
 						className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-5 text-white font-bold text-xs uppercase tracking-widest"
 						style={{ backgroundColor: "#22C55E" }}
@@ -43,8 +63,8 @@ export default function FaqSection() {
 						FREQUENTLY ASKED QUESTIONS <span>🌲</span>
 					</div>
 					<h2
-						className="font-tenor-sans leading-tight mb-6"
-						style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", color: "#1B6B2A" }}
+						className="font-tenor-sans leading-tight mb-6 font-bold"
+						style={{ fontSize: "clamp(2.2rem, 4vw, 3.2rem)", color: "#1B6B2A" }}
 					>
 						Do you have a question? Find answer here
 					</h2>
@@ -67,14 +87,21 @@ export default function FaqSection() {
 							+3
 						</div>
 					</div>
-				</div>
+				</motion.div>
 
 				{/* RIGHT — accordion */}
-				<div className="flex-1 flex flex-col gap-3">
+				<motion.div 
+					variants={containerVariants}
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true, margin: "-100px" }}
+					className="flex-1 flex flex-col gap-3 w-full"
+				>
 					{faqs.map((faq, i) => {
 						const isOpen = open === i;
 						return (
-							<div
+							<motion.div
+								variants={itemVariants}
 								key={i}
 								className="rounded-2xl overflow-hidden border transition-all duration-300"
 								style={{
@@ -93,21 +120,34 @@ export default function FaqSection() {
 										{String(i + 1).padStart(2, "0")}. {faq.q}
 									</span>
 									<span
-										className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 ml-4 text-white font-bold text-lg leading-none"
-										style={{ backgroundColor: isOpen ? "#1B6B2A" : "#22C55E" }}
+										className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 ml-4 text-white font-bold text-lg leading-none transition-transform duration-300"
+										style={{ 
+											backgroundColor: isOpen ? "#1B6B2A" : "#22C55E",
+											transform: isOpen ? "rotate(180deg)" : "rotate(0deg)"
+										}}
 									>
 										{isOpen ? "−" : "+"}
 									</span>
 								</button>
-								{isOpen && (
-									<div className="px-6 pb-5 text-gray-500 text-sm leading-relaxed">
-										{faq.a}
-									</div>
-								)}
-							</div>
+								<AnimatePresence>
+									{isOpen && (
+										<motion.div 
+											initial={{ height: 0, opacity: 0 }}
+											animate={{ height: "auto", opacity: 1 }}
+											exit={{ height: 0, opacity: 0 }}
+											transition={{ duration: 0.3 }}
+											className="px-6 text-gray-500 text-sm leading-relaxed overflow-hidden"
+										>
+											<div className="pb-5">
+												{faq.a}
+											</div>
+										</motion.div>
+									)}
+								</AnimatePresence>
+							</motion.div>
 						);
 					})}
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	);

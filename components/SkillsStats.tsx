@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 const skills = [
 	{ label: "Tree Removal", value: 95 },
@@ -24,11 +25,15 @@ export default function SkillsStats() {
 	}, []);
 
 	return (
-		<section className="py-20 px-6" style={{ backgroundColor: "#f8fdf8" }}>
+		<section className="py-20 px-6 overflow-hidden" style={{ backgroundColor: "#f8fdf8" }}>
 			<div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-8 items-stretch">
 
 				{/* LEFT — dark CTA card */}
-				<div
+				<motion.div 
+					initial={{ opacity: 0, x: -30 }}
+					whileInView={{ opacity: 1, x: 0 }}
+					viewport={{ once: true, margin: "-100px" }}
+					transition={{ duration: 0.6, ease: "easeOut" }}
 					className="lg:w-[38%] shrink-0 rounded-3xl flex flex-col justify-center items-center text-center px-10 py-14"
 					style={{ backgroundColor: "#0D0D0D" }}
 				>
@@ -43,14 +48,21 @@ export default function SkillsStats() {
 					<p className="text-white/50 text-sm mb-2">Get an Instant Quote</p>
 					<a
 						href="tel:+15593695748"
-						className="font-bold text-white text-lg transition-colors hover:text-green-400"
+						className="font-bold text-white text-lg transition-colors hover:text-green-400 group"
 					>
-						(559) 369-5748
+						<span className="inline-block transition-transform group-hover:scale-110">(559) 369-5748</span>
 					</a>
-				</div>
+				</motion.div>
 
 				{/* RIGHT — skill bars */}
-				<div ref={ref} className="flex-1 flex flex-col justify-center gap-5">
+				<motion.div 
+					ref={ref} 
+					initial={{ opacity: 0, x: 30 }}
+					whileInView={{ opacity: 1, x: 0 }}
+					viewport={{ once: true, margin: "-100px" }}
+					transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+					className="flex-1 flex flex-col justify-center gap-5"
+				>
 					<div className="mb-2">
 						<div
 							className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-3 text-white font-bold text-xs uppercase tracking-widest"
@@ -66,8 +78,14 @@ export default function SkillsStats() {
 						</h2>
 					</div>
 
-					{skills.map((s) => (
-						<div key={s.label}>
+					{skills.map((s, i) => (
+						<motion.div 
+							key={s.label}
+							initial={{ opacity: 0, y: 10 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.4, delay: 0.3 + (i * 0.1) }}
+						>
 							<div className="flex justify-between mb-1">
 								<span className="text-sm font-semibold text-gray-700">{s.label}</span>
 								<span className="text-sm font-bold" style={{ color: "#22C55E" }}>{s.value}</span>
@@ -81,9 +99,9 @@ export default function SkillsStats() {
 									}}
 								/>
 							</div>
-						</div>
+						</motion.div>
 					))}
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	);

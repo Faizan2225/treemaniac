@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const tabs = [
 	{
@@ -47,89 +48,102 @@ export default function WhyChooseUs() {
 
 	return (
 		<section className="relative bg-white overflow-hidden">
+			<motion.div
+				initial={{ opacity: 0, y: 50 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				viewport={{ once: true, margin: "-100px" }}
+				transition={{ duration: 0.8, ease: "easeOut" }}
+			>
+				{/* Top: cyan-green left panel + photo right */}
+				<div className="flex flex-col lg:flex-row" style={{ minHeight: "420px" }}>
 
-			{/* Top: cyan-green left panel + photo right */}
-			<div className="flex flex-col lg:flex-row" style={{ minHeight: "420px" }}>
-
-				{/* LEFT — forest green panel */}
-				<div
-					className="relative flex flex-col justify-start px-10 pt-14 pb-0 lg:w-[42%] shrink-0"
-					style={{ backgroundColor: "#1B6B2A" }}
-				>
+					{/* LEFT — forest green panel */}
 					<div
-						className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-6 font-bold text-xs uppercase tracking-widest w-fit text-white"
-						style={{ backgroundColor: "#155222" }}
+						className="relative flex flex-col justify-start px-10 pt-14 pb-0 lg:w-[42%] shrink-0"
+						style={{ backgroundColor: "#1B6B2A" }}
 					>
-						WHY CHOOSE US <span>🌲</span>
+						<div
+							className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-6 font-bold text-xs uppercase tracking-widest w-fit text-white"
+							style={{ backgroundColor: "#155222" }}
+						>
+							WHY CHOOSE US <span>🌲</span>
+						</div>
+
+						<h2
+							className="font-tenor-sans font-bold text-white leading-tight mb-10"
+							style={{ fontSize: "clamp(2.2rem, 4vw, 3.2rem)" }}
+						>
+							Premium Tree Services<br />You Can Rely On
+						</h2>
+
+						{/* Tab list */}
+						<ul className="flex flex-col">
+							{tabs.map((t, i) => (
+								<li key={t.label}>
+									<button
+										onClick={() => setActive(i)}
+										className="w-full text-left flex items-center gap-3 py-3 transition-all duration-200 hover:pl-2"
+										style={{ borderBottom: "1px solid rgba(255,255,255,0.2)" }}
+									>
+										<span
+											className="flex items-center gap-2 px-3 py-1 rounded-full transition-all duration-200 text-sm font-semibold"
+											style={
+												active === i
+													? { backgroundColor: "#22C55E", color: "#fff" }
+													: { color: "rgba(255,255,255,0.8)" }
+											}
+										>
+											<span style={{ fontSize: "0.7rem" }}>›</span>
+											{t.label}
+										</span>
+									</button>
+								</li>
+							))}
+						</ul>
 					</div>
 
-					<h2
-						className="font-tenor-sans font-bold text-white leading-tight mb-10"
-						style={{ fontSize: "clamp(2.2rem, 4vw, 3.2rem)" }}
-					>
-						Premium Tree Services<br />You Can Rely On
-					</h2>
-
-					{/* Tab list */}
-					<ul className="flex flex-col">
-						{tabs.map((t, i) => (
-							<li key={t.label}>
-								<button
-									onClick={() => setActive(i)}
-									className="w-full text-left flex items-center gap-3 py-3 transition-all duration-200"
-									style={{ borderBottom: "1px solid rgba(255,255,255,0.2)" }}
-								>
-									<span
-										className="flex items-center gap-2 px-3 py-1 rounded-full transition-all duration-200 text-sm font-semibold"
-										style={
-											active === i
-												? { backgroundColor: "#22C55E", color: "#fff" }
-												: { color: "rgba(255,255,255,0.8)" }
-										}
-									>
-										<span style={{ fontSize: "0.7rem" }}>›</span>
-										{t.label}
-									</span>
-								</button>
-							</li>
-						))}
-					</ul>
+					{/* RIGHT — photo */}
+					<div className="relative flex-1 min-h-75 lg:min-h-0 overflow-hidden group">
+						<Image key={tab.img} src={tab.img} alt={tab.label} fill className="object-cover object-center transition-all duration-700 group-hover:scale-105" />
+					</div>
 				</div>
 
-				{/* RIGHT — photo */}
-				<div className="relative flex-1 min-h-75 lg:min-h-0">
-					<Image key={tab.img} src={tab.img} alt={tab.label} fill className="object-cover object-center transition-opacity duration-500" />
+				{/* Bottom: green strip left + dark content card right */}
+				<div className="flex flex-col lg:flex-row">
+					<div className="lg:w-[42%] shrink-0" style={{ backgroundColor: "#1B6B2A", minHeight: "60px" }} />
+					<div className="flex-1 px-10 py-10" style={{ backgroundColor: "#0D0D0D" }}>
+						<motion.div
+							key={tab.title}
+							initial={{ opacity: 0, x: 20 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.5 }}
+						>
+							<h3
+								className="font-tenor-sans font-bold text-white mb-4 leading-snug"
+								style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.4rem)" }}
+							>
+								{tab.title}
+							</h3>
+							<p className="text-white/60 text-sm leading-relaxed mb-6 max-w-lg">
+								<span className="font-semibold" style={{ color: "#22C55E" }}>Tree Maniac Tree Service Inc.</span>{" "}
+								{tab.body}
+							</p>
+							<ul className="flex flex-col gap-3">
+								{tab.bullets.map((b) => (
+									<li key={b} className="flex items-center gap-3">
+										<span className="w-6 h-6 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: "#22C55E" }}>
+											<svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+											</svg>
+										</span>
+										<span className="text-white text-sm font-medium">{b}</span>
+									</li>
+								))}
+							</ul>
+						</motion.div>
+					</div>
 				</div>
-			</div>
-
-			{/* Bottom: green strip left + dark content card right */}
-			<div className="flex flex-col lg:flex-row">
-				<div className="lg:w-[42%] shrink-0" style={{ backgroundColor: "#1B6B2A", minHeight: "60px" }} />
-				<div className="flex-1 px-10 py-10" style={{ backgroundColor: "#0D0D0D" }}>
-					<h3
-						className="font-tenor-sans font-bold text-white mb-4 leading-snug"
-						style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.4rem)" }}
-					>
-						{tab.title}
-					</h3>
-					<p className="text-white/60 text-sm leading-relaxed mb-6 max-w-lg">
-						<span className="font-semibold" style={{ color: "#22C55E" }}>Tree Maniac Tree Service Inc.</span>{" "}
-						{tab.body}
-					</p>
-					<ul className="flex flex-col gap-3">
-						{tab.bullets.map((b) => (
-							<li key={b} className="flex items-center gap-3">
-								<span className="w-6 h-6 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: "#22C55E" }}>
-									<svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-									</svg>
-								</span>
-								<span className="text-white text-sm font-medium">{b}</span>
-							</li>
-						))}
-					</ul>
-				</div>
-			</div>
+			</motion.div>
 		</section>
 	);
 }

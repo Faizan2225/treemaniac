@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const bullets = [
 	"Trusted in Fresno & the Central Valley",
@@ -18,10 +21,16 @@ const services = [
 
 export default function AboutSection() {
 	return (
-		<section className="bg-white py-20 px-6">
+		<section className="bg-white py-20 px-6 overflow-hidden">
 			<div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
 				{/* Left — image collage + stat badge */}
-				<div className="relative w-full lg:w-1/2 shrink-0 flex justify-center py-10 lg:py-0">
+				<motion.div 
+					initial={{ opacity: 0, x: -50 }}
+					whileInView={{ opacity: 1, x: 0 }}
+					viewport={{ once: true, margin: "-100px" }}
+					transition={{ duration: 0.8, ease: "easeOut" }}
+					className="relative w-full lg:w-1/2 shrink-0 flex justify-center py-10 lg:py-0"
+				>
 					{/* Decorative background shape */}
 					<div className="absolute top-4 left-4 w-[80%] h-full bg-green-gradient opacity-20 rounded-[3rem] -z-10"></div>
 
@@ -64,10 +73,16 @@ export default function AboutSection() {
 							</p>
 						</div>
 					</div>
-				</div>
+				</motion.div>
 
 				{/* Right — content */}
-				<div className="w-full lg:w-1/2">
+				<motion.div 
+					initial={{ opacity: 0, x: 50 }}
+					whileInView={{ opacity: 1, x: 0 }}
+					viewport={{ once: true, margin: "-100px" }}
+					transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+					className="w-full lg:w-1/2"
+				>
 					{/* Badge */}
 					<div
 						className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-6 text-white font-bold text-xs uppercase tracking-widest"
@@ -132,15 +147,15 @@ export default function AboutSection() {
 					<div className="flex flex-wrap items-center gap-5">
 						<Link
 							href="/about"
-							className="text-white font-bold px-8 py-4 rounded-full transition-colors shadow-md text-sm"
+							className="text-white font-bold px-8 py-4 rounded-full transition-all hover:scale-105 hover:shadow-lg text-sm"
 							style={{ backgroundColor: "#1B6B2A" }}
 						>
 							Learn More
 						</Link>
 
-						<a href="tel:+15593695748" className="flex items-center gap-3">
+						<a href="tel:+15593695748" className="flex items-center gap-3 group">
 							<div
-								className="w-12 h-12 rounded-full flex items-center justify-center shrink-0"
+								className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 transition-transform group-hover:scale-110"
 								style={{ backgroundColor: "#dcfce7" }}
 							>
 								<svg className="w-5 h-5" fill="#22C55E" viewBox="0 0 24 24">
@@ -148,7 +163,7 @@ export default function AboutSection() {
 								</svg>
 							</div>
 							<div className="leading-tight">
-								<p className="text-xs font-semibold uppercase tracking-wide text-gray-400">
+								<p className="text-xs font-semibold uppercase tracking-wide text-gray-400 group-hover:text-green-500 transition-colors">
 									Have Questions?
 								</p>
 								<p className="font-bold text-sm text-gray-800">
@@ -157,7 +172,7 @@ export default function AboutSection() {
 							</div>
 						</a>
 					</div>
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	);

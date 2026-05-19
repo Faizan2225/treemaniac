@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const services = [
 	{
@@ -36,6 +37,21 @@ const services = [
 	},
 ];
 
+const containerVariants = {
+	hidden: { opacity: 0 },
+	visible: {
+		opacity: 1,
+		transition: {
+			staggerChildren: 0.15,
+		},
+	},
+};
+
+const itemVariants = {
+	hidden: { opacity: 0, y: 30 },
+	visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
 export default function ServicesSection() {
 	return (
 		<>
@@ -45,7 +61,13 @@ export default function ServicesSection() {
 				style={{ backgroundColor: "#ffffff", paddingBottom: "140px" }}
 			>
 				{/* Badge + heading */}
-				<div className="text-center mb-12 px-6">
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true, margin: "-100px" }}
+					transition={{ duration: 0.6 }}
+					className="text-center mb-12 px-6"
+				>
 					<div
 						className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-5 text-white font-bold text-xs uppercase tracking-widest"
 						style={{ backgroundColor: "#22C55E" }}
@@ -58,10 +80,16 @@ export default function ServicesSection() {
 					>
 						Our wide variety of tree services
 					</h2>
-				</div>
+				</motion.div>
 
 				{/* Cards 3 + 2 */}
-				<div className="max-w-5xl mx-auto px-6">
+				<motion.div
+					variants={containerVariants}
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true, margin: "-100px" }}
+					className="max-w-5xl mx-auto px-6"
+				>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
 						{services.slice(0, 3).map((s) => (
 							<ServiceCard key={s.href} {...s} />
@@ -72,7 +100,7 @@ export default function ServicesSection() {
 							<ServiceCard key={s.href} {...s} />
 						))}
 					</div>
-				</div>
+				</motion.div>
 
 				{/* Wave — absolute at bottom of section */}
 				<div
@@ -109,35 +137,37 @@ function ServiceCard({
 	desc: string;
 }) {
 	return (
-		<Link
-			href={href}
-			className="group block rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border text-center"
-			style={{
-				backgroundColor: "#f0fdf4",
-				borderColor: "#dcfce7",
-			}}
-		>
-			<div className="relative w-full h-48 overflow-hidden">
-				<Image
-					src={img}
-					alt={label}
-					fill
-					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-					className="object-cover group-hover:scale-105 transition-transform duration-500"
-				/>
-			</div>
+		<motion.div variants={itemVariants}>
+			<Link
+				href={href}
+				className="group block rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border text-center h-full"
+				style={{
+					backgroundColor: "#f0fdf4",
+					borderColor: "#dcfce7",
+				}}
+			>
+				<div className="relative w-full h-48 overflow-hidden">
+					<Image
+						src={img}
+						alt={label}
+						fill
+						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+						className="object-cover group-hover:scale-105 transition-transform duration-500"
+					/>
+				</div>
 
-			<div className="px-6 py-8 relative z-10">
-				<h3
-					className="font-tenor-sans font-bold mb-4 leading-tight text-xl sm:text-2xl"
-					style={{ color: "#1B6B2A" }}
-				>
-					{label}
-				</h3>
-				<p className="text-gray-600 text-sm leading-relaxed line-clamp-4">
-					{desc}
-				</p>
-			</div>
-		</Link>
+				<div className="px-6 py-8 relative z-10 flex flex-col h-[calc(100%-12rem)]">
+					<h3
+						className="font-tenor-sans font-bold mb-4 leading-tight text-xl sm:text-2xl"
+						style={{ color: "#1B6B2A" }}
+					>
+						{label}
+					</h3>
+					<p className="text-gray-600 text-sm leading-relaxed line-clamp-4">
+						{desc}
+					</p>
+				</div>
+			</Link>
+		</motion.div>
 	);
 }

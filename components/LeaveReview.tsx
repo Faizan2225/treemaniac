@@ -1,14 +1,21 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const GOOGLE_REVIEW_URL =
 	"https://www.google.com/search?q=Tree+Maniac+Tree+Service+Inc.&stick=H4sIAAAAAAAA_-NgU1I1qLCwMEk2TzJOsTSySEo1TE2yMqhINE1JM7FIMjFKMTQzsbRIXsQqG1KUmqrgm5iXmZisAGYHpxaVZSanKnjmJesBAIy9QDxJAAAA&hl=en&mat=Cbj2EtEqEPMlElcBTVDHnkymhtjumjvm6vBcGtngpuoQLr72An7-JAkgH6yBFLyeZJHKCJ2yhvSVKK4a1SlTtG0TB3c_mPjdLX4ixw_SE0uGl-qF27JBitbVwwZ1RxkAM_A&authuser=0";
 
 export default function LeaveReview() {
 	return (
-		<section className="bg-white py-16 px-6">
+		<section className="bg-white py-16 px-6 overflow-hidden">
 			<div className="relative max-w-4xl mx-auto">
 				{/* Mascot peeking from bottom left */}
-				<div
+				<motion.div
+					initial={{ x: -50, opacity: 0 }}
+					whileInView={{ x: 0, opacity: 1 }}
+					viewport={{ once: true }}
+					transition={{ duration: 0.8, delay: 0.3 }}
 					className="absolute -bottom-8 -left-4 sm:-bottom-12 sm:-left-12 w-24 sm:w-36 z-20 pointer-events-none"
 					style={{ transform: "scaleX(-1)" }}
 				>
@@ -18,10 +25,15 @@ export default function LeaveReview() {
 						width={160}
 						height={200}
 						className="object-contain drop-shadow-xl"
+						style={{ transform: "scaleX(-1)" }}
 					/>
-				</div>
+				</motion.div>
 
-				<div
+				<motion.div
+					initial={{ opacity: 0, y: 40 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true, margin: "-100px" }}
+					transition={{ duration: 0.7, ease: "easeOut" }}
 					className="relative overflow-hidden rounded-3xl"
 					style={{
 						background:
@@ -44,7 +56,13 @@ export default function LeaveReview() {
 
 					<div className="relative z-10 flex flex-col lg:flex-row items-center gap-10 px-8 sm:px-14 py-14">
 						{/* Left content */}
-						<div className="flex-1 text-center lg:text-left">
+						<motion.div 
+							initial={{ opacity: 0, x: -30 }}
+							whileInView={{ opacity: 1, x: 0 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.6, delay: 0.2 }}
+							className="flex-1 text-center lg:text-left"
+						>
 							<div
 								className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-6 font-bold text-xs uppercase tracking-widest"
 								style={{
@@ -137,12 +155,18 @@ export default function LeaveReview() {
 									/>
 								</svg>
 							</a>
-						</div>
+						</motion.div>
 
 						{/* Right — Logo / visual */}
-						<div className="shrink-0 hidden lg:flex flex-col items-center gap-4">
+						<motion.div 
+							initial={{ opacity: 0, scale: 0.8 }}
+							whileInView={{ opacity: 1, scale: 1 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.6, delay: 0.4, type: "spring" }}
+							className="shrink-0 hidden lg:flex flex-col items-center gap-4"
+						>
 							<div
-								className="w-32 h-32 rounded-full overflow-hidden border-4 shadow-2xl"
+								className="w-32 h-32 rounded-full overflow-hidden border-4 shadow-2xl transition-transform hover:scale-105 duration-300"
 								style={{ borderColor: "rgba(255,255,255,0.15)" }}
 							>
 								<Image
@@ -187,9 +211,9 @@ export default function LeaveReview() {
 									Google Reviews
 								</span>
 							</div>
-						</div>
+						</motion.div>
 					</div>
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	);

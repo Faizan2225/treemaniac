@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Testimonials() {
 	const widgetRef = useRef<HTMLDivElement>(null);
@@ -27,7 +28,13 @@ export default function Testimonials() {
 			}}
 		>
 			{/* Mascot placed safely at the bottom right behind text to ensure it does not overlap or hide anything */}
-			<div className="absolute -bottom-4 -right-2 sm:-bottom-2 sm:right-10 w-28 sm:w-40 z-0 pointer-events-none opacity-80">
+			<motion.div 
+				initial={{ x: 50, opacity: 0 }}
+				whileInView={{ x: 0, opacity: 0.8 }}
+				viewport={{ once: true }}
+				transition={{ duration: 0.8, delay: 0.2 }}
+				className="absolute -bottom-4 -right-2 sm:-bottom-2 sm:right-10 w-28 sm:w-40 z-0 pointer-events-none"
+			>
 				<Image
 					src="/mascot.png"
 					alt="Tree Maniac mascot"
@@ -36,9 +43,15 @@ export default function Testimonials() {
 					style={{ width: "auto", height: "auto" }}
 					className="object-contain"
 				/>
-			</div>
+			</motion.div>
 
-			<div className="relative z-10 max-w-5xl mx-auto text-center">
+			<motion.div 
+				initial={{ opacity: 0, y: 30 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				viewport={{ once: true, margin: "-100px" }}
+				transition={{ duration: 0.6, ease: "easeOut" }}
+				className="relative z-10 max-w-5xl mx-auto text-center"
+			>
 				{/* Badge */}
 				<div
 					className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-5 text-white font-bold text-xs uppercase tracking-widest"
@@ -66,7 +79,7 @@ export default function Testimonials() {
 				<div className="w-full flex justify-center">
 					<div className="w-full min-h-[300px]" ref={widgetRef}></div>
 				</div>
-			</div>
+			</motion.div>
 		</section>
 	);
 }
